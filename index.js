@@ -1,16 +1,23 @@
-var readline = require('readline');
-var _= lodash   = require('lodash');
-
-var rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
-
-rl.question('Ingrese el numero:', (answer) => 
+var askTheUser = function()
 {
-	console.log(getCombinationsThatSum(answer));	
-	process.exit(1);
-});
+	var rl = readline.createInterface({
+		input: process.stdin,
+		output: process.stdout
+	});
+	
+	rl.question('Ingrese el numero:', (answer) => 
+	{
+		console.log(getCombinationsThatSum(answer));	
+		process.exit(1);
+	});
+};
+
+if(typeof window === 'undefined')
+{
+	var readline = require('readline');
+	var _= lodash   = require('lodash');
+	askTheUser();
+}
 
 var getCombinationsThatSum = function(number)
 {

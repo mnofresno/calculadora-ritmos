@@ -1,0 +1,35 @@
+<html>
+	<head>
+		<title>Calculadora de Ritmos</title>
+		<meta charset="ISO-8859-1">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<script src="../index.js"></script>
+		<script>
+			$(document).ready(function()
+			{
+				var numeroInput = $("#numero");
+				var calcular    = $("#botonCalcular");
+				var output      = $("#output");
+				
+				calcular.click(function()
+				{
+					var numeroValor = numeroInput.val();
+					var ritmos = getCombinationsThatSum(numeroValor);
+					output.html(JSON.stringify(ritmos));
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<form onsubmit="return false">
+			<label for="numero">
+				Ingrese el n&uacute;mero:
+				<input id="numero" type="number"/>
+			</label>
+			<button id="botonCalcular" type="submit">Calcular Ritmos</button>
+			<pre id="output">
+			</pre>
+		</form>
+	</body>
+</html>
