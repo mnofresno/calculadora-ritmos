@@ -16,7 +16,13 @@
 				{
 					var numeroValor = numeroInput.val();
 					var ritmos = getCombinationsThatSum(numeroValor);
-					output.html(JSON.stringify(ritmos));
+					var ritmosHtml = "";
+					ritmosHtml = _.map(ritmos, function(ritmo)
+					{
+						return ritmo;
+					}).join("<br />");
+					
+					output.html(ritmosHtml);
 				});
 			});
 		</script>
