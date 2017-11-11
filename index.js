@@ -1,77 +1,60 @@
 var readline = require('readline');
-var lodash   = require('lodash');
+var _= lodash   = require('lodash');
 
-const rl = readline.createInterface({
+var rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
 
 rl.question('Ingrese el numero:', (answer) => 
 {
-	console.log(obtenerSumbolosQueSumen(getCombinations(permute(obtenerSimbolos(answer).split('')))), answer);
-	//console.log(permute(answer.split('')));
-	//console.log(obtenerSumbolosQueSumen(answer));
+	console.log(getCombinationsThatSum(answer));	
+	process.exit(1);
 });
 
-var obtenerSumbolosQueSumen = function(posiblesValores, numero)
+var getCombinationsThatSum = function(number)
 {
-	return lodash.filter(posiblesValores, function(valorActual)
-	{
-		var acumulador = 0;
-		for(y = 0; y < valorActual.length; y++)
-		{
-			acumulador += parseInt(valorActual.split(',')[y]);
-		}
-		
-		return acumulador == numero;
-	});
+	return  getCombinationSum(getAllNumberUpTo(number), number);
 };
 
-var obtenerSimbolos = function(numero)
+var getAllNumberUpTo = function(upToWhat)
 {
-	var output = "";
-	
-	for(var x = 1; x <= numero; x++)
+	return getAllNumbersFromTo(1, upToWhat);
+};
+
+var getAllNumbersFromTo = function(from, to)
+{
+	var result = [];
+	for(var i = from; i <= to; i++)
 	{
-		output += x;
+		result.push(i);
 	}
+	return result;
+};
+
+var getCombinationSum = function(candidates, target)
+{
+	candidates = _.orderBy(candidates);
 	
-	return output;
+	var result = [];
+	getResult(result, [], candidates, target, 0);
+	
+	return result;
 };
 
-
-var getCombinations = function (chars) {
-  var result = [];
-  var f = function(prefix, chars) {
-    for (var i = 0; i < chars.length; i++) {
-      result.push(prefix + chars[i]);
-      f(prefix + chars[i], chars.slice(i + 1));
-    }
-  }
-  f('', chars);
-  return result;
-};
-
-
-var permute = function(permutation) {
-  var length = permutation.length,
-      result = [permutation.slice()],
-      c = new Array(length).fill(0),
-      i = 1, k, p;
-
-  while (i < length) {
-    if (c[i] < i) {
-      k = i % 2 && c[i];
-      p = permutation[i];
-      permutation[i] = permutation[k];
-      permutation[k] = p;
-      ++c[i];
-      i = 1;
-      result.push(permutation.slice());
-    } else {
-      c[i] = 0;
-      ++i;
-    }
-  }
-  return result;
+var getResult = function(result, cur, candidates, target, start)
+{
+	if(target > 0)
+	{
+		for(var i = start; i < candidates.length && target >= candidates[i]; i++)
+		{
+			cur.push(candidates[i]);
+			getResult(result, cur, candidates, target - candidates[i], i);
+			cur.pop();
+		}
+	}
+	else if(target == 0)
+	{
+		result.push(cur.slice());
+	}
 };
