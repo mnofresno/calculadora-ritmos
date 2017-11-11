@@ -37,20 +37,21 @@
 					<div class="panel-body">
 						<form onsubmit="return false">
 							<div class="form-group">
-								<label for="numero">Ingrese el n&uacute;mero:</label>
-									
+								<label for="numero">Ingrese el n&uacute;mero:</label>									
 							</div>
-							
-								<div class="input-group">
-									<input id="numero" type="number" class="form-control"/>
-									<span class="input-group-btn">
-										<button id="botonCalcular" type="submit" class="btn btn-primary">Calcular Ritmos</button>
-									</span>
-								</div>
+							<div class="input-group">
+								<input id="numero" type="number" autofocus class="form-control"/>
+								<span class="input-group-btn">
+									<button id="botonCalcular" type="submit" class="btn btn-primary">Calcular Ritmos</button>
+								</span>
+							</div>
 							<div class="row">
 								<div class="col-xs-12">
 									<br />
-									<pre id="output">
+									<span>Cominaciones resultantes:</span>
+									<br />
+									<br />
+									<pre id="output" style="min-height: 300px;">
 									</pre>
 								</div>
 							</div>
