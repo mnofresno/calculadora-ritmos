@@ -17,3 +17,5 @@ NodeJS
 * Ejecutar:
 
 node index.js
+
+<a href="https://mnofresno.github.io/calculadora-ritmos/web">Probar calculadora</a>
