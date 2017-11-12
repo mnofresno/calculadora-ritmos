@@ -1,25 +1,33 @@
-var process = {
-    true: getAllIncludingPermutedCombinationsThatSum,
-    false: getCombinationsThatSum
-};
-
-$(document).ready(function()
+var VM = function()
 {
-    var numeroInput   = $("#numero");
-    var calcular      = $("#botonCalcular");
-    var output        = $("#output");
-    var permutaciones = $('#permutaciones');
-    calcular.click(function()
+    var self = this;
+    
+    self.incluirPermutaciones    = ko.observable(false);
+    self.numeroValor             = ko.observable();
+    self.permutacionesCalculadas = ko.observable('');
+    
+    var process = {
+        true: getAllIncludingPermutedCombinationsThatSum,
+        false: getCombinationsThatSum
+    };    
+    
+    self.calcular = function()
     {
-        var incluirPermutaciones = permutaciones.is(":checked");
-        var numeroValor = numeroInput.val();
-        var ritmos = process[incluirPermutaciones](numeroValor);
+        var ritmos = process[self.incluirPermutaciones()](self.numeroValor());
         var ritmosHtml = "";
         ritmosHtml = _.map(ritmos, function(ritmo)
         {
             return ritmo;
-        }).join("<br />");
+        }).join("\r\n");
         
-        output.html(ritmosHtml);
-    });
+        self.permutacionesCalculadas(ritmosHtml);
+    };
+    
+    return self;
+};
+
+
+$(document).ready(function()
+{
+    ko.applyBindings(new VM());
 });

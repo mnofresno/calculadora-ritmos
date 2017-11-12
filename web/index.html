@@ -2,7 +2,8 @@
     <head>
         <title>Calculadora de Ritmos Musicales</title>
         <meta charset="ISO-8859-1">
-        <link rel="icon" href="favicon.ico"> 
+        <link rel="icon" href="favicon.ico">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -21,14 +22,14 @@
                                 <label for="numero">Ingrese el n&uacute;mero:</label>                                    
                             </div>
                             <div class="input-group">
-                                <input id="numero" type="number" autofocus class="form-control"/>
+                                <input data-bind="value: numeroValor" type="number" autofocus class="form-control"/>
                                 <span class="input-group-btn">
-                                    <button id="botonCalcular" type="submit" class="btn btn-primary">Calcular Ritmos</button>
+                                    <button data-bind="click: calcular" type="submit" class="btn btn-primary">Calcular Ritmos</button>
                                 </span>
                             </div>
                             <div class="form-check">
                                 <label class="form-check-label">
-                                <input id="permutaciones" type="checkbox" class="form-check-input">
+                                <input data-bind="checked: incluirPermutaciones" type="checkbox" class="form-check-input">
                                 Incluir permutaciones
                             </label>
                             </div>
@@ -38,7 +39,7 @@
                                     <span>Cominaciones resultantes:</span>
                                     <br />
                                     <br />
-                                    <pre id="output" style="height: 300px;overflow-y:auto;">
+                                    <pre data-bind="text: permutacionesCalculadas" style="height: 300px;overflow-y:auto;">
                                     </pre>
                                 </div>
                             </div>
