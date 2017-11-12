@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/mnofresno/calculadora_ritmos/issues"
   },
-  "homepage": "https://github.com/mnofresno/calculadora_ritmos#readme"
+  "homepage": "https://github.com/mnofresno/calculadora_ritmos#readme",
+  "scripts": {
+	"start": "node ./index.js"
+  }
 }
