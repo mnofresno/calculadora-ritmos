@@ -16,6 +16,10 @@ NodeJS
 
 * Ejecutar:
 
-node index.js
+npm start
 
-<a href="https://mnofresno.github.io/calculadora-ritmos/web">Probar calculadora</a>
+* Utilizacion:
+
+Se pedira un numero al usuario. Si desea incluir las permutaciones agregue 'p!' luego del mismo, por ejemplo: 5p!
+
+Tambien puede utilizar la version web de la calculadora de ritmos haciendo clic <a href="https://mnofresno.github.io/calculadora-ritmos/web">aqui</a>
