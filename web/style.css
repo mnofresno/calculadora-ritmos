@@ -1,0 +1,9 @@
+div i.button-spinner {
+    vertical-align: middle;
+    position: fixed;
+    margin-left: -1em;
+}
+
+div button.button-calcular {
+    margin-right: 3em;
+}

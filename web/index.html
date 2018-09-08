@@ -9,6 +9,8 @@
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="style.css">
         <script src="../index.js"></script>
         <script src="main.js"></script>
     </head>
@@ -20,13 +22,14 @@
                     <div class="panel-body">
                         <form onsubmit="return false">
                             <div class="form-group">
-                                <label for="numero">Ingrese el n&uacute;mero:</label>                                    
+                                <label for="numero">Ingrese el n&uacute;mero:</label>
                             </div>
                             <div class="input-group">
-                                <input data-bind="value: numeroValor" type="number" autofocus class="form-control"/>
-                                <span class="input-group-btn">
-                                    <button data-bind="click: calcular" type="submit" class="btn btn-primary">Calcular Ritmos</button>
-                                </span>
+                                <input data-bind="textInput: numeroValor" type="number" autofocus class="form-control"/>
+                                <div class="input-group-btn">
+                                    <button data-bind="click: calcular, enable: enableCalcular" type="submit" class="button-calcular btn btn-primary">Calcular Ritmos</button>
+                                    <i data-bind="visible: loading" class="button-spinner fa fa-spinner fa-spin" style="font-size:24px"></i>
+                                </div>
                             </div>
                             <div class="form-check">
                                 <label class="form-check-label">
@@ -37,7 +40,7 @@
                             <div class="row">
                                 <div class="col-xs-12">
                                     <br />
-                                    <span>Combinaciones resultantes:</span>
+                                    <span>Combinaciones resultantes: <span data-bind="text: cantidadResultados"></span></span>
                                     <br />
                                     <br />
                                     <pre data-bind="text: permutacionesCalculadas" style="height: 300px;overflow-y:auto;">
